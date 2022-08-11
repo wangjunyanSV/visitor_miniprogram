@@ -1,3 +1,3 @@
 module.exports = {
-    transpileDependencies:['@dcloudio/uni-ui','uview-ui']
+    transpileDependencies:['@dcloudio/uni-ui']
 }

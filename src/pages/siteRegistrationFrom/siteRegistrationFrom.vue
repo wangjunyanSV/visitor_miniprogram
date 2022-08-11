@@ -49,6 +49,20 @@
 				</uni-forms-item>
 
 				<uni-forms-item label="免冠照" v-if="item.formId==='10'">
+
+          <div style="height: 60px;width: 60px;margin: 10px;"
+               v-on:click="selectHeadImg">
+            <div style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
+                 v-if="headImg===undefined||headImg===''">
+              <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
+              <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
+            </div>
+            <div
+                v-if="headImg!==undefined&&headImg!==''">
+              <img style="height: 60px;width: 60px;" :src="headImg" alt="">
+            </div>
+          </div>
+
 <!--          <uni-file-picker-->
 <!--              disable-preview-->
 <!--              :del-icon="false"-->
@@ -176,10 +190,21 @@
 				</uni-forms-item>
 
 				<uni-forms-item label="免冠照" v-if="item.formId==='10'">
-
+          <div style="height: 60px;width: 60px;margin: 10px;"
+               v-on:click="selectHeadImg">
+            <div style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
+                 v-if="headImg===undefined||headImg===''">
+              <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
+              <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
+            </div>
+            <div
+                v-if="headImg!==undefined&&headImg!==''">
+              <img style="height: 60px;width: 60px;" :src="headImg" alt="">
+            </div>
+          </div>
 
 <!--					<uni-file-picker style="flex: 1;" ref="files" fileMediatype="image" mode="grid" @select="select"-->
-<!--						@delete="deleteFile" limit="1" />-->
+<!--						@delete="deleteFile" :limit="1" />-->
 
 				</uni-forms-item>
 
@@ -261,9 +286,9 @@
 	export default {
 		data() {
 			return {
+        headImg:"",
 				formData: {
 					numberOfVisitors: 1
-
 				},
 				//拜访时间
 				visitTime: '',
@@ -349,6 +374,37 @@
 			}
 		},
 		methods: {
+      selectHeadImg(){
+
+        let that = this
+        uni.chooseImage({
+          count: 1, //默认9
+          sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+          sourceType: ['album'], //从相册选择
+          success: function (res) {
+
+            uni.getFileSystemManager().readFile({
+              filePath: res.tempFilePaths[0], //参数path:图片相对路径
+              success: res => {
+                console.log(res.data);
+
+                that.$apis.uploadImages(res.data).then(res => {
+                  console.log(res);
+                  that.headImg = res.downloadUrl
+                  that.fileKey = res['fileKey']
+                  that.formData.filekey = that.fileKey
+                })
+              },
+              fail: err => {
+                console.log(err)
+              }
+            })
+
+            console.log(res);
+            console.log(JSON.stringify(res.tempFilePaths));
+          }
+        });
+      },
 			showMoreItem() {
 				this.showMore = !this.showMore
 			},
