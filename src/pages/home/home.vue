@@ -121,6 +121,7 @@
 	import {
 		login
 	} from '../../common/API.js'
+  import globleUser from "@/utils/globleUser";
 
 
 
@@ -270,71 +271,7 @@
 					"uniqueId": openId
 				}).then(res => {
 
-					uni.setStorage({
-						key: this.$config.uid,
-						data: res['visitorUser']['vuid']
-					})
-
-					uni.setStorage({
-						key: this.$config.nikeName,
-						data: res['visitorUser']['name']
-					})
-
-					uni.setStorage({
-						key: this.$config.mobile,
-						data: res['visitorUser']['mobile']
-					})
-
-					uni.setStorage({
-						key: this.$config.personId,
-						data: res['visitorUser']['personId']
-					})
-
-					if (res['visitorUser']['proprietor'] !== undefined && res['visitorUser'][
-							'proprietor'
-						] !==
-						null) {
-						uni.setStorage({
-							key: this.$config.companyId,
-							data: res['visitorUser']['proprietor']['id']
-						})
-
-						uni.setStorage({
-							key: this.$config.companyName,
-							data: res['visitorUser']['proprietor']['name']
-						})
-
-					}
-
-					if (res['visitorUser']['houses'] !== undefined && res['visitorUser']['houses'] !==
-						null && res['visitorUser']['houses'].length !== 0) {
-						uni.setStorage({
-							key: this.$config.houseId,
-							data: res['visitorUser']['houses'][0]['houseId']
-						})
-
-						uni.setStorage({
-							key: this.$config.houseName,
-							data: res['visitorUser']['houses'][0]['houseName']
-						})
-
-						uni.setStorage({
-							key: this.$config.communityId,
-							data: res['visitorUser']['houses'][0]['communityId']
-						})
-
-						uni.setStorage({
-							key: this.$config.communityName,
-							data: res['visitorUser']['houses'][0]['communityName']
-						})
-
-						uni.setStorage({
-							key: this.$config.houses,
-							data: res['visitorUser']['houses']
-						})
-
-					}
-
+          globleUser.saveUser(res)
 
 					console.log(res);
 				})
@@ -370,37 +307,6 @@
 				console.log(res);
 
 			},
-			h5Init() {
-				let that = this
-				uni.setStorage({
-					key: this.$config.wxOpenId,
-					data: 'o9fPZ5Xu-YgUHAJ4afZjclyEblI8',
-					success() {
-						that.getUerDetail()
-					}
-				})
-
-				uni.setStorage({
-					key: this.$config.wxUnionId,
-					data: 'o8cSF5vT-Q2FR1w85vd1IMhmYWQs',
-				})
-
-				uni.setStorage({
-					key: this.$config.accessToken,
-					data: 'eyJhbGciOiJIbWFjU0hBMjU2IiwidHlwIjoiVFYifQ.eyJ1aWQiOiI2MDI3MTc4OC0wMDIxLTAwMDItMDAwNS0wMDAwMDAwMDAwMDEiLCJuYW1lIjoi5b6u5L-h5LiT55So6LSm5Y-3IiwibmJmIjoiMjAyMi0wNy0wOCAxNDoxNzowNi4zODkiLCJpYXQiOiIyMDIyLTA3LTA4IDE0OjE3OjA2LjM4OSJ9.nsfyD6LL0Rr2XoMRcZ8W3oUaEwUuDy2g-J77oBoScqs',
-				})
-
-				uni.setStorage({
-					key: this.$config.personId,
-					data: '1000494',
-				})
-				uni.setStorage({
-					key: this.$config.uid,
-					data: '8aa0c47e-3ce2-4770-b45e-bea5c9afceee',
-				})
-
-			}
-
 
 		},
 		created() {

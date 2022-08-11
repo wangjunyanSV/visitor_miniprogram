@@ -58,7 +58,9 @@
 </template>
 
 <script>
-	export default {
+	import globleUser from "@/utils/globleUser";
+
+  export default {
 		data() {
 			return {
 				checkValue: false,
@@ -131,72 +133,11 @@
 						"uniqueId": that.$config.originId + uni.getStorageSync(that.$config.wxOpenId)
 					}).then(res => {
 						console.log(res);
-
-						uni.setStorage({
-							key: that.$config.uid,
-							data: res['visitorUser']['vuid']
-						})
-
-						uni.setStorage({
-							key: that.$config.nikeName,
-							data: res['visitorUser']['name']
-						})
-
-						uni.setStorage({
-							key: that.$config.mobile,
-							data: res['visitorUser']['mobile']
-						})
-
-						uni.setStorage({
-							key: that.$config.personId,
-							data: res['visitorUser']['personId']
-						})
-
-						if (res['visitorUser']['proprietor'] !== undefined && res['visitorUser'][
-								'proprietor'
-							] !==
-							null) {
-							uni.setStorage({
-								key: that.$config.companyId,
-								data: res['visitorUser']['proprietor']['id']
-							})
-
-							uni.setStorage({
-								key: that.$config.companyName,
-								data: res['visitorUser']['proprietor']['name']
-							})
-
-						}
+            globleUser.saveUser(res)
 
 
 						if (res['visitorUser']['houses'] !== undefined && res['visitorUser']['houses'] !==
 							null && res['visitorUser']['houses'].length !== 0) {
-							uni.setStorage({
-								key: that.$config.houseId,
-								data: res['visitorUser']['houses'][0]['houseId']
-							})
-
-							uni.setStorage({
-								key: that.$config.houseName,
-								data: res['visitorUser']['houses'][0]['houseName']
-							})
-
-							uni.setStorage({
-								key: that.$config.communityId,
-								data: res['visitorUser']['houses'][0]['communityId']
-							})
-
-							uni.setStorage({
-								key: that.$config.communityName,
-								data: res['visitorUser']['houses'][0]['communityName']
-							})
-
-							uni.setStorage({
-								key: that.$config.houses,
-								data: res['visitorUser']['houses']
-							})
-
-
 
 							uni.switchTab({
 								url: "../home/home"
