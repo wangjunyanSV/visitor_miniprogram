@@ -84,7 +84,9 @@
 </template>
 
 <script>
-	export default {
+	import globleUser from "@/utils/globleUser";
+
+  export default {
 		data() {
 			return {
 				papersList: [],
@@ -225,8 +227,9 @@
 
 		},
 		created() {
-			isShouSwitchItems
-
+      if (globleUser.checkBindCompany()&&globleUser.checkBindHouse()){
+        this.isShouSwitchItems=true
+      }
 
 		},
 		onShow() {

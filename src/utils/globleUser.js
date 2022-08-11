@@ -84,6 +84,11 @@ const checkBindHouse = () => {
     return uni.getStorageSync(Config.houseId) !== '' && uni.getStorageSync(Config.houseId) !== undefined
 }
 
+//检查绑定公司
+const checkBindCompany = () => {
+    return uni.getStorageSync(Config.companyId) !== '' && uni.getStorageSync(Config.companyId) !== undefined
+}
+
 const uid = () => {
     return uni.getStorageSync(Config.uid)
 }
@@ -157,5 +162,6 @@ export default {
     communityName,
     houseName,
     houseList,
-    openDoorPreference
+    openDoorPreference,
+    checkBindCompany
 }
