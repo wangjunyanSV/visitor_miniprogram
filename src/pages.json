@@ -1,16 +1,194 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
 		}
+	},
+	"pages": [{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+
+		{
+			"path": "pages/healthCode/healthCode",
+			"style": {
+				"navigationBarTitleText": "通行码"
+			}
+		},
+		{
+			"path": "pages/healthCode/trafficRecord/trafficRecord",
+			"style": {
+				"navigationBarTitleText": "通行记录",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			// 	"path": "pages/siteRegistration/siteRegistration",
+			// 	"style": {
+			// 		"navigationBarTitleText": "访客登记",
+			// 		"enablePullDownRefresh": false
+			// 	}
+
+			// }, {
+			"path": "pages/siteRegistration/searchCompanyName/searchCompanyName",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/visitorRecord/visitorRecord",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "pages/codeView/codeView",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/visitorInvitation/visitorInvitation",
+			"style": {
+				"navigationBarTitleText": "邀约他人",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/accessRecord/accessRecord",
+			"style": {
+				"navigationBarTitleText": "访问记录",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "pages/userCenter/userCenter",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+
+		}
+
+		, {
+			"path": "pages/ownerAuth/ownerAuth",
+			"style": {
+				"navigationBarTitleText": "认证房屋",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/selectCell/selectCell",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/bindWeChat/bindWeChat",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/visitApproval/visitApproval",
+			"style": {
+				"navigationBarTitleText": "来访审批",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "pages/visitApproval/approvalDetail/approvalDetail",
+			"style": {
+				"navigationBarTitleText": "来访审批",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/addSuccess/addSuccess",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/switchHouse/switchHouse",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/codeView/queryCode/queryCode",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/siteRegistrationFrom/siteRegistrationFrom",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/openShareCodeView/openShareCodeView",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+
 	],
+	"usingComponts": true,
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/visitorInvitation/visitorInvitation",
+				"text": "访客邀约"
+			},
+			{
+				"pagePath": "pages/healthCode/healthCode",
+				"text": "门禁通行"
+			},
+			{
+				"pagePath": "pages/userCenter/userCenter",
+				"text": "我的"
+			}
+		]
 	}
+
 }
