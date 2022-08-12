@@ -43,7 +43,7 @@
 			<div class="view_box">
 				<div><span style="color: black">&nbsp; 联系方式&nbsp;</span></div>
 				<input class="input_class" placeholder=" 请输入手机号" v-model="mobile" required ref="mobile"
-					disabled="true"></input>
+					></input>
 			</div>
 			<p style="width: 100%; height: 1px; background-color: #d9d6d6"></p>
 			<div class="view_box">
@@ -81,24 +81,6 @@
 
 		<button type="primary" style="margin-top: 20px;background-color: #1890FF" v-on:click="submitDate">提交
 		</button>
-
-		<!-- <div style="margin-top: 20px;">
-			<uni-steps :options="[{title: '注册登录'}, {title: '完成认证'}, {title: '领取通行码'}]" :active="1">
-			</uni-steps>
-		</div>
- -->
-
-		<!-- <button style="margin-top: 20px;color: #1890FF;border: #1890FF 1px solid;font-weight: 600;"
-			v-on:click="showPopup">查看教程
-		</button>
-
-		<uni-popup ref="popup">
-
-			<scroll-view scroll-y="true">
-				<img src="../../assets/teach_step.jpg" style="width: 100%;height: 100%;" />
-			</scroll-view>
-
-		</uni-popup> -->
 
 	</view>
 </template>
