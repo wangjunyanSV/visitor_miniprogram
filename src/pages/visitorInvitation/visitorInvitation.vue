@@ -452,8 +452,18 @@ export default {
         }).then(res => {
 
           //现场登记的数据
+
+          let fromType
+          let fromKeys = Object.keys(res['formConfigPojo'])
+          if (fromKeys.includes('house')) {
+            fromType = "house"
+          } else if (fromKeys.includes('park')) {
+            fromType = "park"
+          } else {
+            fromType = "all"
+          }
           this.fromConfigList = []
-          this.fromConfigList = res['formConfigPojo']['house']['invite']
+          this.fromConfigList = res['formConfigPojo'][fromType]['invite']
           this.makedata()
 
           //找出防疫证明的项目
@@ -471,7 +481,19 @@ export default {
           "proprietorId": uni.getStorageSync(this.$config.companyId)
         }).then(res => {
           //现场登记的数据
-          this.fromConfigList = res['formConfigPojo']['house']['invite']
+
+          let fromType
+          let fromKeys = Object.keys(res['formConfigPojo'])
+          if (fromKeys.includes('house')) {
+            fromType = "house"
+          } else if (fromKeys.includes('park')) {
+            fromType = "park"
+          } else {
+            fromType = "all"
+          }
+
+          this.fromConfigList = []
+          this.fromConfigList = res['formConfigPojo'][fromType]['invite']
           this.makedata()
 
           //找出防疫证明的项目
