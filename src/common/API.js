@@ -1,6 +1,6 @@
 import {
 	Index
-} from '../common/index.js';
+} from '@/common/index';
 const API = new Index();
 
 

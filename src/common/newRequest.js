@@ -1,11 +1,6 @@
 let isRefreshing = true;
 let subscribers = [];
 
-let baseUrl = "https://lan.truthvision.com/dev" //后台请求接口的公共部分
-
-// let baseUrl = "https://lan.truthvision.com/tml" //后台请求接口的公共部分
-// let baseUrl = "https://lan.truthvision.com/test" //后台请求接口的公共部分
-
 function onAccessTokenFetched() {
 	subscribers.forEach((callback) => {
 		callback();
@@ -48,12 +43,12 @@ export class Http {
 			head = {
 				'Content-Type': 'application/json;charset=UTF-8',
 			}
-		};
+		}
 
 
 		return new Promise((resolve, reject) => {
 			uni.request({
-				url: baseUrl + url,
+				url: config.default.baseAxiosURL + url,
 				data,
 				method,
 				header: header != null ? header : head,
@@ -67,10 +62,10 @@ export class Http {
 					let statusCode = res.statusCode;
 					let errText = res.data.msg;
 					console.log(statusCode, res)
-					if (statusCode == 404) {
+					if (statusCode === 404) {
 						reject(res)
 						console.log('数据不存在')
-					} else if (statusCode == 422) {
+					} else if (statusCode === 422) {
 						// 将需要重新执行的接口缓存到一个队列中
 						addSubscriber(() => {
 							_this.request({
@@ -125,8 +120,8 @@ const getNewToken = () => {
 				console.log(res)
 				console.log(res.code)
 				uni.request({
-					url: baseUrl + '/api1/weixin/third-platform/miniprogram?code=' +
-						res["code"] + '&originId=gh_ae374b20f98c',
+					url: config.default.baseAxiosURL + '/api1/weixin/third-platform/miniprogram?code=' +
+						res["code"] + '&originId='+config.default.wxState,
 					method: 'GET',
 					header: {
 						"content-type": "application/x-www-form-urlencoded"

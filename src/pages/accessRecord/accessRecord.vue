@@ -127,10 +127,6 @@
 					url: '../codeView/queryCode/queryCode?jobId=' + data.jobId
 				})
 
-				// uni.navigateTo({
-				//   url: '../switchHouse/switchHouse'
-				// })
-
 				console.log(data);
 			},
 			changHouse() {

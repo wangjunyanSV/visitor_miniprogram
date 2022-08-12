@@ -17,7 +17,9 @@
 </template>
 
 <script>
-	export default {
+	import globleUser from "@/utils/globleUser";
+
+  export default {
 		data() {
 			return {
 				input_code: ''
@@ -45,42 +47,7 @@
 							.wxOpenId)
 					}).then(res => {
 						console.log(res);
-						uni.setStorage({
-							key: that.$config.uid,
-							data: res['visitorUser']['vuid']
-						})
-
-						uni.setStorage({
-							key: that.$config.nikeName,
-							data: res['visitorUser']['nickname']
-						})
-
-						uni.setStorage({
-							key: that.$config.mobile,
-							data: res['visitorUser']['mobile']
-						})
-
-						uni.setStorage({
-							key: that.$config.personId,
-							data: res['visitorUser']['personId']
-						})
-
-						if (res['visitorUser']['proprietor'] !== undefined && res['visitorUser'][
-								'proprietor'
-							] !==
-							null) {
-							uni.setStorage({
-								key: that.$config.companyId,
-								data: res['visitorUser']['proprietor']['id']
-							})
-
-							uni.setStorage({
-								key: that.$config.companyName,
-								data: res['visitorUser']['proprietor']['name']
-							})
-
-						}
-
+            globleUser.saveUser(res)
 
 						uni.showToast({
 							title: '绑定成功',

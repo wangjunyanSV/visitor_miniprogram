@@ -170,7 +170,9 @@
 				try {
 					if (this.papersList[this.index]['photo']['key']) {
 						this.getPhotoUrl(this.papersList[this.index]['photo']['key'])
-					}
+					}else {
+            this.photoUrl =""
+          }
 				} catch (e) {
 					console.log(e);
 
