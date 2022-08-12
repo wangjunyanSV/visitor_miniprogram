@@ -3,7 +3,7 @@
 		<div class="box">
 			<div class="view_code">
 
-				<img class="head_img" :src="photoUrl">
+				<img  class="head_img" :src="photoUrl">
 
 				<span class="user_name">{{ userName }}</span>
 
@@ -170,10 +170,11 @@
 				try {
 					if (this.papersList[this.index]['photo']['key']) {
 						this.getPhotoUrl(this.papersList[this.index]['photo']['key'])
-					}else {
+					} else {
             this.photoUrl =""
           }
 				} catch (e) {
+          this.photoUrl =""
 					console.log(e);
 
 				}
