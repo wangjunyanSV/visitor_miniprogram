@@ -826,11 +826,38 @@
 					})
 
 				}).catch(err => {
-					uni.showToast({
-						title: '被拜访人不存在',
-						icon: "none"
-					})
+          console.log(err)
+          switch (err.data.code) {
+            case 400102015: {
+              uni.showToast({
+                title: '开始时间早于当前时间',
+                icon: "none"
+              })
+              break
+            }
+            case 400102016: {
+              uni.showToast({
+                title: '结束时间早于开始时间',
+                icon: "none"
+              })
+              break
+            }
+            case 404102012: {
+              uni.showToast({
+                title: '拜访的房产不存在',
+                icon: "none"
+              })
+              break
+            }
+            case 400102020: {
+              uni.showToast({
+                title: '被拜访人不存在',
+                icon: "none"
+              })
+              break
+            }
 
+          }
 				})
 
 			},

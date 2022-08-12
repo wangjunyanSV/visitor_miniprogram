@@ -63,10 +63,13 @@
           <uni-forms-item label="免冠照" v-if="item.formId==='10'">
             <div style="height: 60px;width: 60px;margin: 10px;"
                  v-on:click="selectHeadImg">
-              <div style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
-                   v-if="headImg===undefined||headImg===''">
-                    <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
-                    <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
+              <div
+                  style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
+                  v-if="headImg===undefined||headImg===''">
+                <div
+                    style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
+                <div
+                    style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
               </div>
               <div
                   v-if="headImg!==undefined&&headImg!==''">
@@ -172,10 +175,13 @@
           <uni-forms-item label="免冠照" v-if="item.formId==='10'">
             <div style="height: 60px;width: 60px;margin: 10px;"
                  v-on:click="selectHeadImg">
-              <div style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
-                   v-if="headImg===undefined||headImg===''">
-                <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
-                <div style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
+              <div
+                  style="height: 60px;width: 60px;display: flex;justify-self: center;justify-content:center;align-items: center;background-color:#eeeeee;border-radius: 6px;"
+                  v-if="headImg===undefined||headImg===''">
+                <div
+                    style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;"></div>
+                <div
+                    style="height: 50px;width: 5px;background-color: white;border-radius: 2px;align-self: center;transform: rotate(90deg);position: absolute;"></div>
               </div>
               <div
                   v-if="headImg!==undefined&&headImg!==''">
@@ -771,6 +777,39 @@ export default {
         uni.redirectTo({
           url: '../codeView/queryCode/queryCode?jobId=' + res.jobId
         })
+      }).catch(err => {
+        switch (err.data.code) {
+          case 400102015: {
+            uni.showToast({
+              title: '开始时间早于当前时间',
+              icon: "none"
+            })
+            break
+          }
+          case 400102016: {
+            uni.showToast({
+              title: '结束时间早于开始时间',
+              icon: "none"
+            })
+            break
+          }
+          case 404102012: {
+            uni.showToast({
+              title: '拜访的房产不存在',
+              icon: "none"
+            })
+            break
+          }
+          case 400102020: {
+            uni.showToast({
+              title: '被拜访人不存在',
+              icon: "none"
+            })
+            break
+          }
+
+        }
+        console.log(err)
       })
 
     }
