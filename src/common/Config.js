@@ -5,10 +5,10 @@ const wxState = "gh_ae374b20f98c"
 // const baseAxiosURL = "https://lan.truthvision.com/dev"
 
 /*测试环境*/
-//  const baseAxiosURL = "https://lan.truthvision.com/test"
+ const baseAxiosURL = "https://lan.truthvision.com/test"
 
 /*示例环境*/
- const baseAxiosURL = "https://lan.truthvision.com/tml"
+ // const baseAxiosURL = "https://lan.truthvision.com/tml"
 
 /*生产环境*/
 //  const  baseAxiosURL = "https://iacp.truthvision.com/alert-operation"

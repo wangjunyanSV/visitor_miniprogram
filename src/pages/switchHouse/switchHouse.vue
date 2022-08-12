@@ -11,8 +11,6 @@
 			<div style="clear: both;"></div>
 		</div>
 
-
-
 		<radio-group @change="radioChange">
 			<label v-for="(item, index) in houses" :key="item.value" style="display: flex;margin: 10px 20px;">
 				<view style="flex: 1;">{{item.communityName}}{{item.name}}</view>
@@ -55,16 +53,19 @@
 						})
 						uni.setStorage({
 							key: this.$config.communityName,
-							data: house.communityName
+							data: house.communityName,
+              success(){
+                uni.$emit('changeHouse',{msg:'房屋切换'})
+                uni.navigateBack({
+
+                })
+              }
 						})
 
 					}
 				})
-        uni.$emit('changeHouse',{msg:'房屋切换'})
 
-				uni.navigateBack({
 
-				})
 
 			},
 			addHouse() {
