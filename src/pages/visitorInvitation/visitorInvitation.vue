@@ -329,10 +329,16 @@ export default {
       //图片控制
       showMore: false,
       //显示更多
-      isshowMore: false
+      isshowMore: false,
+      current:0,
     }
   },
   methods: {
+    check(res) {
+      this.current = res
+      this.memo = this.items[this.current]['name']
+      console.log(res + this.memo);
+    },
     selectHeadImg() {
       let that = this
       uni.chooseImage({

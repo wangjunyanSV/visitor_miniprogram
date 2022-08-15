@@ -2,10 +2,10 @@ const appId = "wxa86cff8e41afde34";
 const wxState = "gh_ae374b20f98c"
 
 /*开发环境*/
-const baseAxiosURL = "https://lan.truthvision.com/dev"
+// const baseAxiosURL = "https://lan.truthvision.com/dev"
 
 /*测试环境*/
- // const baseAxiosURL = "https://lan.truthvision.com/test"
+ const baseAxiosURL = "https://lan.truthvision.com/test"
 
 /*示例环境*/
  // const baseAxiosURL = "https://lan.truthvision.com/tml"
