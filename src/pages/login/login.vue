@@ -166,6 +166,13 @@
 						})
 						// this.$vux.toast.text('验证码错误', 'mobile')
 					}
+
+          if (e.data['code'] === 409001001) {
+						uni.showToast({
+							title: '手机号已被使用'
+						})
+						// this.$vux.toast.text('验证码错误', 'mobile')
+					}
 				})
 
 

@@ -288,6 +288,7 @@
 				return true
 			},
 			checkUserIdentifier() {
+        if (globleUser.checkLogin()){
 				this.$apis.userIdentifier({
 					'uid': uni.getStorageSync(this.$config.uid),
 					"statuses": "WaitingForReview"
@@ -295,7 +296,7 @@
 					this.waitingForReviewList = res['jobList']
 					console.log(res);
 				})
-
+        }
 			},
 
 			btnClick(res) {

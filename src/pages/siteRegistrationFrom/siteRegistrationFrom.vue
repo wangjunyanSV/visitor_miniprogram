@@ -892,11 +892,13 @@
 			onLoad(option) {
 
 				this.areaId = option.areaId
-
+        uni.showLoading({
+          mask:true
+        })
 				this.$apis.getCommunityFormConfig({
 					"communityId": this.areaId
 				}).then(res => {
-
+          uni.hideLoading()
 					let fromType
 					this.address = res['address']
 					let fromKeys = Object.keys(res['formConfigPojo'])
@@ -933,6 +935,9 @@
 
 					console.log(res);
 				}).catch(err => {
+          console.log("数据出错")
+
+          uni.hideLoading()
 					if (err.statusCode === 404) {
 						uni.showToast({
 							title: "查询小区失败",
