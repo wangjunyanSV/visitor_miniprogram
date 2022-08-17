@@ -282,6 +282,7 @@
 
 <script>
 	import validate from "../../utils/fromvalidate";
+  import {_debounce} from "@/utils/public";
 
 	export default {
 		data() {
@@ -551,9 +552,12 @@
 			deleteFileHS(e, index) {
 				console.log('删除文件：', e)
 			},
-			submitForm() {
+			submitForm:_debounce(function (){
+        uni.showLoading({
+          mask:true,
+          title:'正在提交...'
+        })
 				this.portRule = []
-
 				console.log(this.nucleicCode)
 
 				this.requestData.forEach(res => {
@@ -819,12 +823,22 @@
 				console.log(JSON.stringify(requestData))
 
 				this.$apis.creatVisitor(JSON.parse(JSON.stringify(requestData))).then(res => {
-					console.log(res);
-					uni.redirectTo({
-						url: '../codeView/queryCode/queryCode?jobId=' + res.jobId
-					})
+          console.log(res);
+          uni.hideLoading()
+
+          if (res.code===400102021){
+
+
+
+          }else {
+            uni.redirectTo({
+              url: '../codeView/queryCode/queryCode?jobId=' + res.jobId
+            })
+          }
 
 				}).catch(err => {
+          uni.hideLoading()
+
           console.log(err)
           switch (err.data.code) {
             case 400102015: {
@@ -859,7 +873,7 @@
           }
 				})
 
-			},
+			}),
 			makedata() {
 				let that = this
 				this.requestData = []

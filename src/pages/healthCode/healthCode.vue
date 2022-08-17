@@ -204,12 +204,10 @@
 						this.tipTextStyle = 'someOneIsOut'
 						this.qrColor = "#F79032"
 						this.makeCode()
-
 						this.days = r['passCodePojoList'][0]['timesInLastDaysPojo']['days']
 						this.times = r['passCodePojoList'][0]['timesInLastDaysPojo']['times']
 
-					}
-
+          }
 					console.log(r);
 				})
 
@@ -256,6 +254,7 @@
 <style scoped>
 	.box {
 		background-color: #F6F6F6;
+    height: 100vh;
 	}
 
 	.img_code {

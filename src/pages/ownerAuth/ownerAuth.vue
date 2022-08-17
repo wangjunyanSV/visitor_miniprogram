@@ -68,10 +68,6 @@
 				</view>
 			</div>
 
-
-
-
-
 		</div>
 
 		<div style="color: #A1A0A1;clear:both;margin-top: 20px">为了保证本社区的住户都能够安全、可靠的享受高品质服务</div>
@@ -86,7 +82,9 @@
 </template>
 
 <script>
-	export default {
+	import {_debounce} from "@/utils/public";
+
+  export default {
 		data() {
 			return {
 				housePropertyId: "",
@@ -150,9 +148,13 @@
 
 				// this.$refs.popup.open('top')
 			},
-			submitDate() {
-				this.housePropertyName = ''
+			submitDate: _debounce( function () {
 
+        uni.showLoading({
+          mask:true,
+          title:'正在提交...'
+        })
+				this.housePropertyName = ''
 
 				for (let i = 0; i < this.valueData.length; i++) {
 					this.housePropertyName += this.valueData[i] + this.listData[i]
@@ -190,10 +192,6 @@
 					})
 					return
 				}
-
-
-
-
 
 				let res;
 				switch (this.current) {
@@ -233,6 +231,7 @@
 				console.log(param);
 
 				this.$apis.ownerHouse(param).then(res => {
+          uni.hideLoading()
 					console.log(res);
 					uni.showToast({
 						title: '提交成功',
@@ -245,11 +244,10 @@
 
 						}
 					})
-
-				})
-
-
-			}
+				}).catch(err=>{
+          uni.hideLoading()
+        })
+			})
 
 		}
 	}

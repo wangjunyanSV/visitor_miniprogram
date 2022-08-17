@@ -252,13 +252,10 @@
 </template>
 
 <script>
-import {
-  getUerDetail
-} from '../../common/API.js'
-import {
-  originId
-} from '../../common/Config.js'
+import {getUerDetail} from '../../common/API.js'
+import {originId} from '../../common/Config.js'
 import validate from '../../utils/fromvalidate.js'
+import {_debounce} from "@/utils/public";
 
 export default {
   data() {
@@ -330,7 +327,7 @@ export default {
       showMore: false,
       //显示更多
       isshowMore: false,
-      current:0,
+      current: 0,
     }
   },
   methods: {
@@ -573,7 +570,11 @@ export default {
 
 
     },
-    submitData() {
+    submitData: _debounce(function () {
+      uni.showLoading({
+        mask: true,
+        title: '正在提交...'
+      })
 
       //校验数据
       this.portRule = []
@@ -780,11 +781,12 @@ export default {
       console.log(JSON.parse(JSON.stringify(requestData)));
       this.$apis.inviteVisitor(JSON.parse(JSON.stringify(requestData))).then(res => {
         console.log(res);
-
+        uni.hideLoading()
         uni.redirectTo({
           url: '../codeView/queryCode/queryCode?jobId=' + res.jobId
         })
       }).catch(err => {
+        uni.hideLoading()
         switch (err.data.code) {
           case 400102015: {
             uni.showToast({
@@ -819,7 +821,7 @@ export default {
         console.log(err)
       })
 
-    }
+    })
   },
   created() {
     let that = this
