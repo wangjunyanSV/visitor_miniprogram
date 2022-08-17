@@ -25,13 +25,6 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
-			// 	"path": "pages/siteRegistration/siteRegistration",
-			// 	"style": {
-			// 		"navigationBarTitleText": "访客登记",
-			// 		"enablePullDownRefresh": false
-			// 	}
-
-			// }, {
 			"path": "pages/siteRegistration/searchCompanyName/searchCompanyName",
 			"style": {
 				"navigationBarTitleText": "",

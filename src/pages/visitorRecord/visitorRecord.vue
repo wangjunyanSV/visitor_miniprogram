@@ -87,17 +87,6 @@
 		created() {
 			this.getDataList()
 
-			// this.$apis.getJobDetail({
-			// 	"pageSize": 999,
-			// 	"page": 0,
-			// 	"visitorIds": uni.getStorageSync(this.$config.personId)
-			// }).then(res => {
-
-			// 	this.papersList = res['jobList']
-			// 	console.log(res);
-			// }).catch(err => {
-			// 	console.log(err);
-			// })
 		},
 		onPullDownRefresh() {
 			this.reload = true;

@@ -311,8 +311,7 @@
 				//小区ID
 				communityId: '',
 				isShowMore: false,
-
-				memo: '请选择',
+				memo: '',
 				//来访事由下标
 				momeIndex: 0,
 
@@ -935,6 +934,12 @@
 
 					console.log(res);
 				}).catch(err => {
+
+          uni.showToast({
+            title:"数据接口出错",
+            icon:"error"
+          })
+
           console.log("数据出错")
 
           uni.hideLoading()

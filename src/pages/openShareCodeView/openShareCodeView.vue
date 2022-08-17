@@ -38,9 +38,6 @@
 				<div class="item">
 					<img class="img" src="../../assets/add-account.svg" />
 					<div>被访人:{{intervieweeName}}</div>
-
-					<!-- <div class="input" title="被访人" :value="intervieweeName" readonly="readonly" :show-clear="false">
-				</div> -->
 				</div>
 				<div class="item">
 					<img class="img" src="../../assets/on-time-shipment.svg">
@@ -130,12 +127,11 @@
 					})
 
           try {
-            if (res["papersList"][0]['photo']['key']) {
+            if (res["papersList"][0]['photo']!==undefined&&res["papersList"][0]['photo']['key']!==undefined) {
               this.getPhotoUrl(res["papersList"][0]['photo']['key'])
             }
           } catch (e) {
             console.log(e);
-
           }
 
 					// this.papersList = res["papersList"]
